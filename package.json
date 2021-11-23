@@ -1,0 +1,32 @@
+{
+    "name": "layer-vis",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.js",
+    "author": "Douglas Marodin",
+    "scripts": {
+        "cargo:build" : "set RUSTFLAGS=--cfg=web_sys_unstable_apis && cargo build --target wasm32-unknown-unknown",
+        "build": "set RUSTFLAGS=--cfg=web_sys_unstable_apis && rimraf dist pkg && webpack",
+        "start": "set RUSTFLAGS=--cfg=web_sys_unstable_apis && rimraf dist pkg && webpack-dev-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dmmarodin/layer-vis.git"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dmmarodin/layer-vis/issues"
+    },
+    "homepage": "https://github.com/dmmarodin/layer-vis#readme",
+    "dependencies": {
+        "@wasm-tool/wasm-pack-plugin": "^1.1.0",
+        "copy-webpack-plugin": "^5.0.3",
+        "webpack": "^4.42.0",
+        "webpack-cli": "^3.3.3",
+        "rimraf": "^3.0.0"
+    },
+    "devDependencies": {
+        "webpack-dev-server": "^3.7.1"
+    }
+}

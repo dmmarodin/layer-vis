@@ -1,0 +1,52 @@
+[package]
+name = "layer-vis"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+
+[features]
+default = ["console_log"]
+
+[dependencies]
+cfg-if = "1.0.0"
+console_error_panic_hook = "0.1.7"
+winit = {version= "0.25.0", features=["web-sys"]}
+wasm-bindgen = "0.2.78"
+console_log = {version = "0.2", features=["color"], optional = true}
+log = "0.4"
+cgmath = "0.18.0"
+wgpu = "0.11.0"
+env_logger = "0.9"
+pollster = "0.2.2"
+wasm-bindgen-futures = "0.4.25"
+bytemuck = { version = "1.7.2", features = [ "derive" ] }
+web-sys= {version = "0.3.22", features = [
+    'console',
+    "AddEventListenerOptions",
+    'CssStyleDeclaration',
+    'BeforeUnloadEvent',
+    'Document',
+    'DomRect',
+    'Element',
+    'Event',
+    'EventTarget',
+    'FocusEvent',
+    'HtmlCanvasElement',
+    'HtmlElement',
+    'KeyboardEvent',
+    'MediaQueryList',
+    'MediaQueryListEvent',
+    'MouseEvent',
+    'Node',
+    'PointerEvent',
+    'Window',
+    'WheelEvent',
+    'GpuTextureFormat'
+]}
