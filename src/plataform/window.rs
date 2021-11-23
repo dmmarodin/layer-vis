@@ -1,18 +1,14 @@
 extern crate winit;
-use log::debug;
+extern crate js_sys;
 use wasm_bindgen::JsCast;
-use web_sys::Document;
-use winit::{
-    error::OsError,
-    window::{Window, WindowBuilder},
-    event_loop::EventLoop
-};
+use web_sys::HtmlCanvasElement;
+use winit::{event_loop::EventLoop, window::WindowBuilder};
 
 pub struct WindowState {
-    window: winit::window::Window,
-    event_loop: EventLoop<()>,
-    document: web_sys::Document,
-    canvas: web_sys::HtmlCanvasElement,
+    pub window: winit::window::Window,
+    pub event_loop: EventLoop<()>,
+    pub document: web_sys::Document,
+    canvas: HtmlCanvasElement
 }
 
 impl WindowState {
@@ -38,22 +34,6 @@ impl WindowState {
                 .body()
                 .unwrap()
                 .dyn_into::<web_sys::HtmlElement>()
-                .unwrap();
-            body.style().set_property("margin", "0px");
-            body.style().set_property("height", "100%");
-
-            let screen_size_x = body.client_width() as u32;
-            let screen_size_y = body.client_height() as u32;
-
-            canvas.set_width(screen_size_x);
-            canvas.set_height(screen_size_y);
-            canvas
-                .style()
-                .set_property("width", &format!("{}px", screen_size_x))
-                .unwrap();
-            canvas
-                .style()
-                .set_property("height", &format!("{}px", screen_size_y))
                 .unwrap();
 
             body.append_child(&canvas)
