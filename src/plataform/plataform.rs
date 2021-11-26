@@ -2,8 +2,6 @@ use super::logging;
 use super::window;
 
 use window::WindowState;
-use winit::dpi::PhysicalSize;
-use winit::event::*;
 
 pub struct PlataformState {
     pub window_state: WindowState,
